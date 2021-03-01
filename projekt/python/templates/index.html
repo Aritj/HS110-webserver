@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% if content == {} %}
+	<p>This should only happen when no plugs are found on the network! (ie. '/projekt/python/data/ip.txt' is empty)</p>
+{% else %}
+	{% for i in content %}
+		{% for j in content[i] %}
+			{% if j == 'Alias' %}
+				<p>
+				<a href="devices/{{content[i]['Alias']}}"><img border="0" src="static/hs110.jpg" width="118" height="118"></a>
+				{% if content[i]['Is_on'] == 'True' %}
+					<a href="/switchstate/{{content[i]['Alias']}}"><button type="button" class="btn btn-success">{{content[i]['Alias']}} is activated</button></a>
+				{% elif content[i]['Is_on'] == 'False' %}
+					<a href="/switchstate/{{content[i]['Alias']}}"><button type="button" class="btn btn-danger">{{content[i]['Alias']}} is shutdown</button></a>
+				</p>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+{% endblock %}

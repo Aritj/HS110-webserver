@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Group 5{% endblock %}
+
+
+{% block content %}
+                {% for i in content %}
+			{% if content[i]['Alias'] == alias[0] %}
+			<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+				<div class="card-header">Information about plug {{content[i]['Alias']}}</div>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					{% for j in content[i] %}
+						<p class="card-text">{{j}}: {{content[i][j]}}</p>
+					{% endfor %}
+				</div>
+			</div>
+        		{% endif %}
+	        {% endfor %}
+{% endblock %}
