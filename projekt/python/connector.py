@@ -10,7 +10,7 @@ def refreshIPs():
 	os.system("../bash-scripts/get_hs100_ip_fast.sh")
 
 def GetServerInfo():
-	with open('/home/atj/projekt/python/data/server.txt', 'r') as r:
+	with open('data/server.txt', 'r') as r:
 		list = []
 		text = r.read()
 		for line in text.splitlines():
@@ -19,7 +19,7 @@ def GetServerInfo():
 
 def GetInfo():
 	''' Returns a dictionary with Alias, IP, MAC, Model and Is_on values for each plug '''
-	with open('/home/atj/projekt/python/data/ip.txt', 'r') as r:
+	with open('data/ip.txt', 'r') as r:
 		text = r.read()
 		full_dict = {}
 		linecount = 0
@@ -101,4 +101,3 @@ def readDict(dict = GetInfo()):
 def formatJSON(dict = GetInfo()):
 	''' Only for pretty printing, call for example "print(formatJSON(GetInfo()))" '''
 	return json.dumps(dict, ensure_ascii = False, indent = 4)
-

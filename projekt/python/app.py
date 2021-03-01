@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 # Refresh tp-link IPs
 def refreshIPs():
-	os.system("/home/atj/projekt/bash-scripts/get_hs100_ip_fast.sh")
+	os.system("../bash-scripts/get_hs100_ip_fast.sh")
 
 # Refresh server stats
 def refresh_stats():
-	os.system("/home/atj/projekt/bash-scripts/cpu-memory-swap.sh")
+	os.system("../bash-scripts/cpu-memory-swap.sh")
 
 # Homepage
 @app.route('/')
