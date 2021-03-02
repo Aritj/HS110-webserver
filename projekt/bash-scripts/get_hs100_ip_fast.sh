@@ -1,5 +1,5 @@
+#!/bin/bash
 #!/bin/sh
-# Group 5
 
 # Get network information (IP address and subnet mask in CIDR notation)
 # Save to variable 'network_info', this variable will be used in the NMAP command.
