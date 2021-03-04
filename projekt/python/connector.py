@@ -8,6 +8,7 @@ def reboot():
 
 def refreshIPs():
 	os.system("../bash-scripts/get_hs100_ip_fast.sh")
+refreshIPs()
 
 def GetServerInfo():
 	with open('data/server.txt', 'r') as r:
