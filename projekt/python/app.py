@@ -11,6 +11,8 @@ def refreshIPs():
 # Refresh server stats
 def refresh_stats():
 	os.system("../bash-scripts/cpu-memory-swap.sh")
+	#os.system('ssh serverArnie "cat serverArnie.txt" >> /home/atj/projekt/python/data/server.txt')
+        #os.system('ssh serverAlex "cat serverAlex.txt" >> /home/atj/projekt/python/data/server.txt')
 
 # Homepage
 @app.route('/')
