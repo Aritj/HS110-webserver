@@ -9,7 +9,7 @@ refreshIPs()
 
 # Refresh server stats
 def refresh_stats():
-	os.system('/home/atj/projekt/bash-scripts/cpu-memory-swap.sh') # host
+	os.system('../bash-scripts/cpu-memory-swap.sh') # host
 	os.system('ssh serverAlex "cat serverAlex.txt" >> data/server.txt') # external .201
 	os.system('ssh serverArnie "cat serverArnie.txt" >> data/server.txt') # external .203
 
