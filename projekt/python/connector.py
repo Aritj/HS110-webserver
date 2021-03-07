@@ -14,6 +14,12 @@ def refreshIPs():
 # Refresh all IPs
 refreshIPs()
 
+def refreshStats():
+	''' Refresh server stats '''
+	os.system('../bash-scripts/cpu-memory-swap.sh') # localhost
+	os.system('ssh serverAlex "cat serverAlex.txt" >> data/server.txt') # external host
+	os.system('ssh serverArnie "cat serverArnie.txt" >> data/server.txt') # external host
+
 def GetServerInfo():
 	''' Returns text in "server.txt" as list '''
 	with open('data/server.txt', 'r') as r:
