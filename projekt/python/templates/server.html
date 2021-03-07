@@ -15,13 +15,13 @@
   <tbody>
     {% for i in range(content|length) %}
       {% if i is divisibleby 5 %}
-      <tr>
-        <th scope="row">{{content[i]}}</th> 
+        <tr>
+          <th scope="row">{{content[i]}}</th> 
       {% elif (i+1) is divisibleby 5 %}
-        <td>{{content[i]}}</td>
-      </tr>
+          <td>{{content[i]}}</td>
+        </tr>
       {% else %}
-        <td>{{content[i]}}</td>
+          <td>{{content[i]}}</td>
       {% endif %}
     {% endfor %}
     <!--
