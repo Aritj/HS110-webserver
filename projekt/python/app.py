@@ -1,29 +1,19 @@
 from flask import Flask, redirect, url_for, render_template, request
-from connector import GetInfo, SwitchState, ActivateAll, ShutdownAll, GetServerInfo, reboot, refreshIPs
+from connector import GetInfo, SwitchState, ActivateAll, ShutdownAll, GetServerInfo, reboot, refreshIPs, refreshStats
 import os
 
 app = Flask(__name__)
-
-# Refresh tp-link IPs
-refreshIPs()
-
-# Refresh server stats
-def refresh_stats():
-	os.system('../bash-scripts/cpu-memory-swap.sh') # localhost
-	os.system('ssh serverAlex "cat serverAlex.txt" >> data/server.txt') # external host
-	os.system('ssh serverArnie "cat serverArnie.txt" >> data/server.txt') # external host
 
 # Homepage
 @app.route('/')
 @app.route('/home')
 def home():
 	dict = GetInfo()
-	print(dict)
 	return render_template('index.html', content = dict)
 
 @app.route('/server')
 def server():
-	refresh_stats()
+	refreshStats()
 	list = GetServerInfo()
 	return render_template('server.html', content = list)
 
