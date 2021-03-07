@@ -20,7 +20,7 @@ def refreshStats():
 	os.system('ssh serverAlex "cat serverAlex.txt" >> data/server.txt') # external host
 	os.system('ssh serverArnie "cat serverArnie.txt" >> data/server.txt') # external host
 
-def GetServerInfo():
+def getServerInfo():
 	''' Returns text in "server.txt" as list '''
 	with open('data/server.txt', 'r') as r:
 		list = []
@@ -29,7 +29,7 @@ def GetServerInfo():
 			list.append(line)
 	return(list)
 
-def GetInfo():
+def getInfo():
 	''' Returns a dictionary with Alias, IP, MAC, Model and Is_on values for each plug '''
 	with open('data/ip.txt', 'r') as r:
 		text = r.read()
@@ -53,7 +53,7 @@ def GetInfo():
 			full_dict.update({linecount:plug_dict})
 	return full_dict
 
-def GetMoreInfo(dict = GetInfo()):
+def getMoreInfo(dict = GetInfo()):
 	''' Function for retrieving more info (useless!!!) '''
 	infoDict = {}
 	for i in dict:
@@ -63,7 +63,7 @@ def GetMoreInfo(dict = GetInfo()):
 		infoDict.update({i:plug.hw_info})
 	return infoDict
 
-def SwitchState(alias, dict = GetInfo()):
+def switchState(alias, dict = GetInfo()):
 	''' Checks the state of given plug (given by plug Alias), and switches that state, very much like a simple on/off switch '''
 	for i in dict:
 		if dict[i]['Alias'] == alias:
@@ -74,7 +74,7 @@ def SwitchState(alias, dict = GetInfo()):
 				asyncio.run(SmartPlug(dict[i]['IP_address']).update())
 				asyncio.run(SmartPlug(dict[i]['IP_address']).turn_on())
 
-def ActivateAll(dict = GetInfo()):
+def activateAll(dict = GetInfo()):
 	''' Loops through all plugs in the network '''
 	''' and turns them back on, if they're off '''
 	for i in dict:
@@ -82,7 +82,7 @@ def ActivateAll(dict = GetInfo()):
 			asyncio.run(SmartPlug(dict[i]['IP_address']).update())
 			asyncio.run(SmartPlug(dict[i]['IP_address']).turn_on())
 
-def ShutdownAll(dict = GetInfo()):
+def shutdownAll(dict = GetInfo()):
 	''' Loops through all plugs in the network '''
 	''' and turns them off, if they're online  '''
 	for i in dict:
