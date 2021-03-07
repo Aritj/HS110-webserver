@@ -8,26 +8,26 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def home():
-	dict = GetInfo()
+	dict = getPlugInfo()
 	return render_template('index.html', content = dict)
 
 # Server
 @app.route('/server')
 def server():
 	refreshStats()
-	list = GetServerInfo()
+	list = getServerInfo()
 	return render_template('server.html', content = list)
 
 # Plug information
 @app.route('/devices/<input>')
 def devices(input):
-	return render_template('devices.html', content = GetInfo(), alias = [input])
+	return render_template('devices.html', content = getPlugInfo(), alias = [input])
 
 # Shutdown / Activate plug
 @app.route('/switchstate/<input>')
 def switch(input):
-	dict = GetInfo()
-	SwitchState(input, dict)
+	dict = getPlugInfo()
+	switchState(input, dict)
 	return redirect(url_for('home'))
 
 # About us page
@@ -38,15 +38,15 @@ def about_us():
 # Activate all plugs function
 @app.route('/activate')
 def activate():
-	dict = GetInfo()
-	ActivateAll(dict)
+	dict = getPlugInfo()
+	activateAll(dict)
 	return redirect(url_for('home'))
 
 # Shutdown all plugs function
 @app.route('/shutdown')
 def shutdown():
-	dict = GetInfo()
-	ShutdownAll(dict)
+	dict = getPlugInfo()
+	shutdownAll(dict)
 	return redirect(url_for('home'))
 
 # Reboot server function
