@@ -64,14 +64,9 @@ def GetMoreInfo(dict = GetInfo()):
 	return infoDict
 
 def SwitchState(alias, dict = GetInfo()):
-	''' Checks the state of given plug (given by plug Alias), and switches that state '''
-	''' very much like a simple on/off switch                                         '''
-	print(f'I am working with {alias}')
+	''' Checks the state of given plug (given by plug Alias), and switches that state, very much like a simple on/off switch '''
 	for i in dict:
 		if dict[i]['Alias'] == alias:
-			print(dict[i]['Alias'] == alias)
-			ip = "".join(dict[i]['IP_address'])
-			print(dict[i]['Is_on'])
 			if dict[i]['Is_on'] == "True":
 				print(asyncio.run(SmartPlug(dict[i]['IP_address']).update()))
 				print(asyncio.run(SmartPlug(dict[i]['IP_address']).turn_off()))
