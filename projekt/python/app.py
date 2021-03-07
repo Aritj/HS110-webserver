@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from connector import GetInfo, SwitchState, ActivateAll, ShutdownAll, GetServerInfo, reboot, refreshIPs, refreshStats
+from connector import getPlugInfo, switchState, activateAll, shutdownAll, getServerInfo, reboot, refreshIPs, refreshStats
 import os
 
 app = Flask(__name__)
