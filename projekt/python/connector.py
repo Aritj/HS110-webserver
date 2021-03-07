@@ -53,7 +53,7 @@ def getPlugInfo():
 			full_dict.update({linecount:plug_dict})
 	return full_dict
 
-def getMoreInfo(dict = GetInfo()):
+def getMoreInfo(dict = getPlugInfo()):
 	''' Function for retrieving more info (useless!!!) '''
 	infoDict = {}
 	for i in dict:
@@ -63,7 +63,7 @@ def getMoreInfo(dict = GetInfo()):
 		infoDict.update({i:plug.hw_info})
 	return infoDict
 
-def switchState(alias, dict = GetInfo()):
+def switchState(alias, dict = getPlugInfo()):
 	''' Checks the state of given plug (given by plug Alias), and switches that state, very much like a simple on/off switch '''
 	for i in dict:
 		if dict[i]['Alias'] == alias:
@@ -74,7 +74,7 @@ def switchState(alias, dict = GetInfo()):
 				asyncio.run(SmartPlug(dict[i]['IP_address']).update())
 				asyncio.run(SmartPlug(dict[i]['IP_address']).turn_on())
 
-def activateAll(dict = GetInfo()):
+def activateAll(dict = getPlugInfo()):
 	''' Loops through all plugs in the network '''
 	''' and turns them back on, if they're off '''
 	for i in dict:
@@ -82,7 +82,7 @@ def activateAll(dict = GetInfo()):
 			asyncio.run(SmartPlug(dict[i]['IP_address']).update())
 			asyncio.run(SmartPlug(dict[i]['IP_address']).turn_on())
 
-def shutdownAll(dict = GetInfo()):
+def shutdownAll(dict = getPlugInfo()):
 	''' Loops through all plugs in the network '''
 	''' and turns them off, if they're online  '''
 	for i in dict:
@@ -90,18 +90,18 @@ def shutdownAll(dict = GetInfo()):
 			asyncio.run(SmartPlug(dict[i]['IP_address']).update())
 			asyncio.run(SmartPlug(dict[i]['IP_address']).turn_off())
 
-def writeDict(dict = GetInfo()):
+def writeDict(dict = getPlugInfo()):
 	''' Writes raw JSON data to "hs100_data.json" under "templates" folder. '''
 	with open('templates/hs100_data.json', 'w') as w:
 		json.dump(dict, w, ensure_ascii = False)
 	return dict
 
-def readDict(dict = GetInfo()):
+def readDict(dict = getPlugInfo()):
 	''' Reads the JSON data stored under "hs100_data.json" '''
 	with open('templates/hs100_data.json', 'r') as r:
 		text = (json.dumps(json.load(r), ensure_ascii=False, indent = 4))
 	return text
 
-def formatJSON(dict = GetInfo()):
+def formatJSON(dict = getPlugInfo()):
 	''' Only for pretty printing, call for example "print(formatJSON(GetInfo()))" '''
 	return json.dumps(dict, ensure_ascii = False, indent = 4)
