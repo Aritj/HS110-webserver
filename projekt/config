@@ -1,0 +1,6 @@
+# configuration file
+
+# Specify network in CIDR notation (x.x.x.x/yy)
+subnet = 192.168.8.0/24
+
+# SSH information
