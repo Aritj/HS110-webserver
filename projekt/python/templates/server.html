@@ -13,11 +13,11 @@
     </tr>
   </thead>
   <tbody>
-    {% for i in range(len(content)) %}
-      {% if (i % 5 == 0) %}
+    {% for i in range(content|length) %}
+      {% if i is divisibleby 5 %}
       <tr>
         <th scope="row">{{content[i]}}</th> 
-      {% elif (i % 5 == 4) %}
+      {% elif (i+1) is is divisibleby 5 %}
         <td>{{content[i]}}</td>
       </tr>
       {% else %}
