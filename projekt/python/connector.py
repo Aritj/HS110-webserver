@@ -4,13 +4,18 @@ import asyncio
 from kasa.smartplug import SmartPlug, DeviceType, SmartDevice, requires_update
 
 def reboot():
+	''' Reboots the server '''
 	os.system("sudo reboot")
 
 def refreshIPs():
+	''' Calls bash script to scan network for plugs '''
 	os.system("../bash-scripts/get_hs100_ip.sh")
+
+# Refresh all IPs
 refreshIPs()
 
 def GetServerInfo():
+	''' Returns text in "server.txt" as list '''
 	with open('data/server.txt', 'r') as r:
 		list = []
 		text = r.read()
@@ -42,8 +47,6 @@ def GetInfo():
 			full_dict.update({linecount:plug_dict})
 	return full_dict
 
-
-
 def GetMoreInfo(dict = GetInfo()):
 	''' Function for retrieving more info (useless!!!) '''
 	infoDict = {}
@@ -53,7 +56,6 @@ def GetMoreInfo(dict = GetInfo()):
 		asyncio.run(plug.update())
 		infoDict.update({i:plug.hw_info})
 	return infoDict
-
 
 def SwitchState(alias, dict = GetInfo()):
 	''' Checks the state of given plug (given by plug Alias), and switches that state '''
