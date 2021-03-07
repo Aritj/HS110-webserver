@@ -10,7 +10,7 @@ refreshIPs()
 # Refresh server stats
 def refresh_stats():
 	os.system('../bash-scripts/cpu-memory-swap.sh') # localhost
-	os.system('../bash-scripts/cpu-memory-swap.sh') # external host(s)
+	os.system('../bash-scripts/ext-cpu-memory-swap.sh') # external host(s)
 
 # Homepage
 @app.route('/')
