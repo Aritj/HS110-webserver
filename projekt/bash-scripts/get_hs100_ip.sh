@@ -3,7 +3,7 @@
 
 # Get network information (IP address and subnet mask in CIDR notation)
 # Save to variable 'network_info', this variable will be used in the NMAP command.
-network_info=$(ip -o -f inet addr show | grep 'eth0' | awk '/scope global/ {print $4}')
+LAN_network_info=$(ip -o -f inet addr show | grep 'eth0' | awk '/scope global/ {print $4}')
 
 # Aggresively scan LAN network for port TCP/9999
 # Grep for devices with port TCP/9999 open
