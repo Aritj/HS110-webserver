@@ -9,7 +9,7 @@ def reboot():
 
 def refreshIPs():
 	''' Calls bash script to scan network for plugs '''
-	os.system("../bash-scripts/get_hs100_ip.sh")
+	os.system("../bash-scripts/get_plug_ip.sh")
 
 # Refresh all IPs
 refreshIPs()
