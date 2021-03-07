@@ -1,12 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request
-from connector import GetInfo, SwitchState, ActivateAll, ShutdownAll, GetServerInfo, reboot
+from connector import GetInfo, SwitchState, ActivateAll, ShutdownAll, GetServerInfo, reboot, refreshIPs
 import os
 
 app = Flask(__name__)
 
 # Refresh tp-link IPs
-def refreshIPs():
-	os.system("../bash-scripts/get_hs100_ip.sh")
+refreshIPs()
 
 # Refresh server stats
 def refresh_stats():
