@@ -104,5 +104,5 @@ def readDict(dict = getPlugInfo()):
 	return text
 
 def formatJSON(dict = getPlugInfo()):
-	''' Only for pretty printing, call for example "print(formatJSON(GetInfo()))" '''
+	''' Only for pretty printing, call for example "print(formatJSON(GetPlugInfo()))" '''
 	return json.dumps(dict, ensure_ascii = False, indent = 4)
