@@ -3,7 +3,7 @@
 
 # Get network information (IP address and subnet mask in CIDR notation).
 # Look into the 'config' file for subnet specification, save to variable 'network_info', whic will be used in the NMAP scan.
-network_info=$(cat ../config | grep subnet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])/2[0-9]')
+network_config=$(cat ../config | grep subnet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])/2[0-9]')
 
 if [[ -z "$network_config" ]]; then
   # If network config is not OK, then get LAN information on 'eth0' and save to variable 'network_info', this subnet will be used in the NMAP command.
