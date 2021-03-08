@@ -11,7 +11,7 @@ def refreshIPs():
 	''' Calls bash script to scan network for plugs '''
 	os.system("../bash-scripts/get_plug_ip.sh")
 
-# Refresh all IPs
+# Refresh IPs whenever connector.py is run (python3 connector.py) or imported (python3 app.py)
 refreshIPs()
 
 def refreshStats():
