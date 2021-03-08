@@ -32,6 +32,7 @@ def getServerInfo():
 def getPlugInfo():
 	''' Returns a dictionary with Alias, IP, MAC, Model and Is_on values for each plug '''
 	with open('data/ip.txt', 'r') as r:
+		next(r) # skip header/subnet info
 		text = r.read()
 		full_dict = {}
 		linecount = 0
