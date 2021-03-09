@@ -8,4 +8,4 @@ RUN pip3 install Flask
 RUN pip3 install python-kasa --pre
 RUN git clone https://github.com/Aritj/linux-project.git /docker_github/
 WORKDIR "/docker_github/projekt/python"
-#CMD [ "python3", "app.py" ]
+CMD [ "python3", "app.py" ]
