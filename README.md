@@ -8,3 +8,5 @@ Home automation system using TP-link HS110 plugs.
 
 Run the server (localhost:8080):
 python3 /projekt/python/app.py
+
+Manually network settings in the 'config' file.
